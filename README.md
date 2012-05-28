@@ -52,7 +52,6 @@ File: `fuel/modules/your_module/models/Projects_model.php`
 
 Where clearly the `authors_model` and `categories_model` are found in the `fuel/modules/your_module/models` folder.
 
-## Result
 
 
 ## How do I use a jQuery plugin like Chosen inside my advanced module?
