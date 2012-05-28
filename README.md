@@ -1,6 +1,7 @@
 FuelCMS---Related-Entries
 =========================
-# FuelCMS - DRY Base Module for related entries
+
+FuelCMS - Related Entries - a DRY Base_Module for related entries
 
 ## Introduction
 
@@ -32,21 +33,19 @@ Once that's done, all you have to do is declare an array of related_models that 
 
 Here's an example:
 
-> # FILE: fuel/modules/your_module/models/Projects_model.php
-> -- 
+File: `fuel/modules/your_module/models/Projects_model.php`
 
-> require_once(YOUR_MODULE_PATH . 'libraries/related_entries_model.php');
->
->  class Projects_model extends Related_entries_model
->	{
->   public $related_models = array('authors_model', 'categories_model');
-> (...)
-> }
-> class Related_entry_model extends Base_module_record
-> {
-> (...) // the data record doesn't do much as of yet...
-> }
+  require_once(YOUR_MODULE_PATH . 'libraries/related_entries_model.php');
 
+    class Projects_model extends Related_entries_model
+	  {
+     public $related_models = array('authors_model', 'categories_model');
+      (...)
+    }
+    class Related_entry_model extends Base_module_record
+    {
+      (...) // the data record doesn't do much as of yet...
+    }
 
 Where clearly the `authors_model` and `categories_model` are found in the `fuel/modules/your_module/models` folder.
 
@@ -55,13 +54,14 @@ You have to add the JS files inside `fuel/modules/your_module/assets/js` and the
 Then you'll have to configure each module's 'js' property in order to have the plugin loaded. 
 The official way to do so is to add:
 
->'js' => array('your_module' => ('jquery.pluginname.js', 'file2.js', 'etc.js')
+
+    'js' => array('your_module' => ('jquery.pluginname.js', 'file2.js', 'etc.js')
 
 inside your `your_module_fuel_models.php` file, for each one of the models declared.
 
 Since there is no official way to load more than one CSS file besides the automatically loaded `your_module.css` file, I suggest to add the other CSS files required by the Chosen plugin at the head of the `your_module.css' file like so:
 
-> @import url("chosen/chosen.css");
+  > @import url("chosen/chosen.css");
 
 In this case the CSS is inside `fuel/modules/your_module/assets/css/chosen` but you could put it anywhere really.
 
