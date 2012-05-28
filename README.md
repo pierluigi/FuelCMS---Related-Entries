@@ -24,10 +24,13 @@ http://harvesthq.github.com/chosen/
 
 ## Installation
 1. Copy this file inside your own advanced module's 'libaries' folder (ie `fuel/modules/your_module/libraries`)
-2. Grab a copy of jQuery's 'Chosen' plugin here: http://harvesthq.github.com/chosen/ and save it inside your module's assets. 
+2. Create the DB table that will hold the relations as described inside `install.sql`
+3. (Optional but recommended) Grab a copy of jQuery's 'Chosen' plugin here: http://harvesthq.github.com/chosen/ and save it inside your module's assets. 
 More on how to do this below.
 
 ## Usage
+It's as simple as extending the `Related_entries_model` and declaring which other models (from within the same advanced module) are going to be saved as part of a `one_to_many` relationship.
+
 All the modules involved will have to extend the `Related_entries_model` (and its record class `Related_entry_model`). 
 Once that's done, all you have to do is declare an array of related_models that will be used to populate the form inside the top-level model. 
 
@@ -49,6 +52,9 @@ File: `fuel/modules/your_module/models/Projects_model.php`
 
 Where clearly the `authors_model` and `categories_model` are found in the `fuel/modules/your_module/models` folder.
 
+## Result
+
+
 ## How do I use a jQuery plugin like Chosen inside my advanced module?
 You have to add the JS files inside `fuel/modules/your_module/assets/js` and the css inside `fuel/modules/your_module/assets/css` 
 Then you'll have to configure each module's 'js' property in order to have the plugin loaded. 
@@ -64,5 +70,4 @@ Since there is no official way to load more than one CSS file besides the automa
   > @import url("chosen/chosen.css");
 
 In this case the CSS is inside `fuel/modules/your_module/assets/css/chosen` but you could put it anywhere really.
-
 
