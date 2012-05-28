@@ -1,9 +1,13 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+define('RELATED_ENTRIES_TABLE', 'related_entries');
+define('ADVANCED_MODULE', 'test');
+
 	require_once(FUEL_PATH . 'models/base_module_model.php');
 
 	class Related_entries_model extends Base_module_model
 	{
+		
 		public $record_class = 'Related_entry';
 		// Which models we can link to this one in a one_to_many way
 		public $related_models; // array
@@ -43,7 +47,7 @@
 				$options                   = array();
 				// Get all entries from each model as select options
 				foreach ($this->related_models as $model) {
-					$this->load->module_model('gocart', $model);
+					$this->load->module_model(ADVANCED_MODULE, $model);
 					$entries                              = $this->$model->my_options_list();
 					$options[$this->$model->short_name()] = $entries;
 				}
