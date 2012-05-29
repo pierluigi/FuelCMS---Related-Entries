@@ -31,7 +31,7 @@ More on how to do this below.
 ## Usage
 It's as simple as extending the `Related_entries_model` and declaring which other models (from within the same module) are going to be saved as part of a `one_to_many` relationship.
 
-All the modules involved will have to extend the `Related_entries_model` (and its record class `Related_entry_model`). 
+**All the modules involved will have to extend the `Related_entries_model` (and its record class `Related_entry_model`).** 
 Once that's done, all you have to do is declare an array of related_models that will be used to populate the form inside the top-level model. 
 
 Here's an example:
