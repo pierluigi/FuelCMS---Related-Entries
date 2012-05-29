@@ -29,7 +29,7 @@ http://harvesthq.github.com/chosen/
 More on how to do this below.
 
 ## Usage
-It's as simple as extending the `Related_entries_model` and declaring which other models (from within the same advanced module) are going to be saved as part of a `one_to_many` relationship.
+It's as simple as extending the `Related_entries_model` and declaring which other models (from within the same module) are going to be saved as part of a `one_to_many` relationship.
 
 All the modules involved will have to extend the `Related_entries_model` (and its record class `Related_entry_model`). 
 Once that's done, all you have to do is declare an array of related_models that will be used to populate the form inside the top-level model. 
@@ -38,17 +38,20 @@ Here's an example:
 
 File: `fuel/modules/your_module/models/Projects_model.php`
 
-  require_once(YOUR_MODULE_PATH . 'libraries/related_entries_model.php');
+  	
 
-    class Projects_model extends Related_entries_model
-	  {
-     public $related_models = array('authors_model', 'categories_model');
-      (...)
-    }
-    class Related_entry_model extends Base_module_record
-    {
-      (...) // the data record doesn't do much as of yet...
-    }
+	require_once(YOUR_MODULE_PATH . 'libraries/related_entries_model.php');
+
+	class Projects_model extends Related_entries_model
+	{
+		public $related_models = array('authors_model', 'categories_model');
+		(...)
+	}
+	
+	class Related_entry_model extends Base_module_record
+	{
+		(...) // the data record doesn't do much as of yet...
+	}
 
 Where clearly the `authors_model` and `categories_model` are found in the `fuel/modules/your_module/models` folder.
 
